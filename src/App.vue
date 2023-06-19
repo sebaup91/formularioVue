@@ -1,19 +1,32 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Formulario en Vue.js</h1>
+    <FormularioVue @emit-form="addUser" />
+    <InfoTabla :users="users" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import FormularioVue from "./components/FormularioVue.vue";
+import InfoTabla from "./components/InfoTabla.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    FormularioVue,
+    InfoTabla,
+  },
+  data() {
+    return {
+      users: [],
+    };
+  },
+  methods: {
+    addUser(user) {
+      this.users.push(user);
+    },
+  },
+};
 </script>
 
 <style>
